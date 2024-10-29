@@ -1,0 +1,93 @@
+$cal-table-width: 252px
+
+input.regular-text
+  width: auto
+
+.chosen-container
+  width: 350px!important
+
+.extra-operations
+  label
+    margin-right: 30px
+
+.calendar-container
+  position: relative
+  width: ($cal-table-width*2+20+$cal-table-width/7)
+  padding: 10px
+  background: white
+  margin: 10px 0
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+  border-radius: 4px
+  -webkit-box-shadow: 0 2px 16px rgba(0,0,0,0.15)
+  box-shadow: 0 2px 16px rgba(0,0,0,0.15)
+  .selected-date
+    text-align: center
+    border-top: 1px solid rgb(228, 228, 228)
+    line-height: 30px
+    margin-top: 10px
+    padding: 10px 0 0
+    height: 30px
+    button
+      margin-left: 10px
+  .switch-month-container
+    position: relative
+    .switch-month
+      position: absolute
+      cursor: pointer
+      top: 1px
+      padding: 10px
+      font-size: 1.2em
+      &:hover
+        background: rgb(242,242,242)
+      &.switch-left
+        left: 0
+      &.switch-right
+        right: 0
+  .calendar-block
+    display: inline-block
+    width: $cal-table-width
+    h3
+      margin: 10px 0
+      color: rgb(56,56,56)
+      text-align: center
+    &:first-child
+      margin-right: ($cal-table-width/7)
+  .table-wrapper
+    height: $cal-table-width
+    table
+      width: $cal-table-width
+      color: rgb(224,224,224)
+      th, td
+        cursor: pointer
+        width: ($cal-table-width/7)
+        font-weight: normal
+        text-align: center
+        height: ($cal-table-width/7)
+        color: rgb(150, 150, 150)
+        &.day
+          position: relative
+          color: rgb(56,56,56)
+          &:hover, &.hover
+            background: rgb(242,242,242)
+          &.interval
+            background: rgb(232,232,232)
+          &.selected
+            background: rgb(223, 223, 223)
+            &:hover::after
+              content: "X"
+              font-weight: bold
+              color: rgb(212, 73, 5)
+              position: absolute
+              z-index: 10
+              top: 0
+              left: 0
+              height: ($cal-table-width/7)
+              width: ($cal-table-width/7)
+              background: rgba(255,255,255,0.5)
+              line-height: ($cal-table-width/7)
+              font-size: 1.2em
+          &.active
+            background: rgb(0,119,203)
+            color: white

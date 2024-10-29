@@ -1,0 +1,115 @@
+input.regular-text {
+  width: auto;
+}
+
+.chosen-container {
+  width: 350px !important;
+}
+
+.extra-operations label {
+  margin-right: 30px;
+}
+
+.calendar-container {
+  position: relative;
+  width: 560px;
+  padding: 10px;
+  background: white;
+  margin: 10px 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+}
+.calendar-container .selected-date {
+  text-align: center;
+  border-top: 1px solid #e4e4e4;
+  line-height: 30px;
+  margin-top: 10px;
+  padding: 10px 0 0;
+  height: 30px;
+}
+.calendar-container .selected-date button {
+  margin-left: 10px;
+}
+.calendar-container .switch-month-container {
+  position: relative;
+}
+.calendar-container .switch-month-container .switch-month {
+  position: absolute;
+  cursor: pointer;
+  top: 1px;
+  padding: 10px;
+  font-size: 1.2em;
+}
+.calendar-container .switch-month-container .switch-month:hover {
+  background: #f2f2f2;
+}
+.calendar-container .switch-month-container .switch-month.switch-left {
+  left: 0;
+}
+.calendar-container .switch-month-container .switch-month.switch-right {
+  right: 0;
+}
+.calendar-container .calendar-block {
+  display: inline-block;
+  width: 252px;
+}
+.calendar-container .calendar-block h3 {
+  margin: 10px 0;
+  color: #383838;
+  text-align: center;
+}
+.calendar-container .calendar-block:first-child {
+  margin-right: 36px;
+}
+.calendar-container .table-wrapper {
+  height: 252px;
+}
+.calendar-container .table-wrapper table {
+  width: 252px;
+  color: #e0e0e0;
+}
+.calendar-container .table-wrapper table th, .calendar-container .table-wrapper table td {
+  cursor: pointer;
+  width: 36px;
+  font-weight: normal;
+  text-align: center;
+  height: 36px;
+  color: #969696;
+}
+.calendar-container .table-wrapper table th.day, .calendar-container .table-wrapper table td.day {
+  position: relative;
+  color: #383838;
+}
+.calendar-container .table-wrapper table th.day:hover, .calendar-container .table-wrapper table th.day.hover, .calendar-container .table-wrapper table td.day:hover, .calendar-container .table-wrapper table td.day.hover {
+  background: #f2f2f2;
+}
+.calendar-container .table-wrapper table th.day.interval, .calendar-container .table-wrapper table td.day.interval {
+  background: #e8e8e8;
+}
+.calendar-container .table-wrapper table th.day.selected, .calendar-container .table-wrapper table td.day.selected {
+  background: #dfdfdf;
+}
+.calendar-container .table-wrapper table th.day.selected:hover::after, .calendar-container .table-wrapper table td.day.selected:hover::after {
+  content: "X";
+  font-weight: bold;
+  color: #d44905;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  height: 36px;
+  width: 36px;
+  background: rgba(255, 255, 255, 0.5);
+  line-height: 36px;
+  font-size: 1.2em;
+}
+.calendar-container .table-wrapper table th.day.active, .calendar-container .table-wrapper table td.day.active {
+  background: #0077cb;
+  color: white;
+}
+
+/*# sourceMappingURL=admin.css.map */

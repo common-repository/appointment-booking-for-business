@@ -1,0 +1,417 @@
+$font: Arial
+$cell-border: 1px solid rgb(211,211,211)
+$hover-bg: rgb(212, 232, 231)
+$inactive-bg: rgb(242, 242, 242)
+$window-bg: rgb(245, 249, 251)
+
+$breakpoint-tablet-start: 480px
+$breakpoint-desktop-start: 768px
+
+@mixin tablet
+  @media (min-width: $breakpoint-tablet-start)
+    @content
+
+@mixin desktop
+  @media (min-width: $breakpoint-desktop-start)
+    @content
+
+@mixin box-sizing
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+
+=border-radius($val)
+  -webkit-border-radius: $val
+  -moz-border-radius: $val
+  border-radius: $val
+
+.calendar-container
+  .calendar-wrapper
+    display: none
+    @include tablet
+      position: relative
+
+    &.active
+      display: block
+
+    .window-bg
+      display: none
+      background: rgba(255,255,255,0.5)
+      position: fixed
+      @include tablet
+        position: absolute
+      z-index: 10
+      width: 100%
+      height: 100%
+
+    .window-booking
+      @include box-sizing
+      display: none
+      z-index: 999999999999
+      position: fixed
+      width: 100%
+      top: 0
+      left: 0
+      height: 100%
+      @include tablet
+        position: absolute
+        width: 350px
+        top: 50%
+        left: 50%
+        margin-left: -175px
+        margin-top: -175px
+        height: auto
+      overflow-y: auto
+      background: $window-bg
+      border: $cell-border
+      padding: 20px
+      -webkit-border-radius: 3px
+      -moz-border-radius: 3px
+      border-radius: 3px
+
+      .window-header
+        padding: 0
+        border-bottom: 1px solid rgb(200,200,200)
+        padding-bottom: 10px
+        margin-bottom: 15px
+        padding-left: 30px
+        margin-top: -0.2em
+        font-size: 1.2em
+        @include tablet
+          padding-left: 0
+
+      .form-row
+        margin-bottom: 7px
+        clear: both
+        label
+          display: inline-block
+          width: 25%
+          text-align: right
+          font-size: 1em
+          line-height: 1em
+          @include tablet
+            font-size: 0.8em
+          font-weight: normal
+          padding: 0 20px 0 0
+        & > span > input, & > span > select
+          line-height: 1em
+          background: white
+          display: inline-block
+          width: 70%
+          font-size: 1em
+          padding: 4px
+          @include tablet
+            font-size: 0.8em
+          -webkit-border-radius: 3px
+          -moz-border-radius: 3px
+          border-radius: 3px
+          border: $cell-border
+          font-weight: normal
+        & > span > select
+          height: 40px
+          @include tablet
+            height: 30px
+          option[disabled]
+            color: rgb(230,230,230)
+        //&.bottom-button
+        //  text-align: center
+        //  label
+        //    display: none
+        //  @include tablet
+        //    label
+        //      display: inline-block
+        & > span > button
+          background: white
+          border: 1px solid rgb(50,50,50)
+          -webkit-border-radius: 2px
+          -moz-border-radius: 2px
+          border-radius: 2px
+          padding: 7px
+          width: 200px
+          font-size: 1em
+          @include tablet
+            padding: 5px
+            width: 150px
+            font-size: 0.8em
+
+          text-align: center
+          display: inline-block
+          margin: 0
+          color: black
+          font-weight: normal
+          &:hover
+            background: rgb(230,230,230)
+        .price-container
+          font-size: 1.2em
+        .price
+          font-weight: bold
+        .extras-container-label
+          display: block
+          float: left
+        &.extras-row
+          label
+            margin-top: 15px
+            display: block
+            float: none
+          .extras-container
+            width: 95%
+            padding-left: 5px
+            label.extra-row
+              overflow: auto
+              margin-bottom: 0.5em
+              margin-top: 0.5em
+              border: $cell-border
+              display: block
+              width: 100%
+              text-align: left
+              padding: 5px
+              +border-radius(2px)
+              @include box-sizing
+              background-color: white
+              span
+                display: inline-block
+              input
+                vertical-align: 0px
+                margin-left: 4px
+              &:hover
+                background-color: rgb(240,240,240)
+              &>div
+                @include box-sizing
+                float: left
+              & .cb-block
+                width: 10%
+              & .name-block
+                width: 60%
+              & .price-block
+                width: 30%
+                white-space: nowrap
+
+
+      form
+        .form-error
+          display: none
+          margin-bottom: 10px
+        .thank-you
+          display: none
+          text-align: center
+          font-size: 1.3em
+          font-weight: bold
+          color: rgb(150,150,150)
+          margin-top: 80px
+          margin-bottom: 60px
+        &.completed
+          & .thank-you
+            display: block
+          & .form-row
+            display: none
+
+      .window-close
+        position: absolute
+        cursor: pointer
+        z-index: 2
+        font-size: 1.2em
+        &:hover, &:active
+          color: rgb(150,150,150)
+        &.tablet
+          color: rgb(200,200,200)
+          display: none
+          @include tablet
+            display: block
+          top: 10px
+          right: 10px
+        &.mobile
+          color: rgb(150,150,150)
+          @include tablet
+            display: none
+          position: absolute
+          top: 14px
+          left: 20px
+
+    &.window-opened
+      .window-bg, .window-booking
+        display: block
+
+    .calendar-header
+      text-align: left
+      position: relative
+      font-size: 1.2em
+      @include tablet
+        &
+          font-size: 1.3em
+          text-align: center
+
+    .month-switcher
+      text-align: right
+      @include tablet
+        position: absolute
+        bottom: -2px
+        right: 0
+      font-size: 0.7em
+      color: rgb(110,110,110)
+      i
+        font-size: 1em
+        cursor: pointer
+        display: inline-block
+        padding: 5px 15px
+        -webkit-border-radius: 3px
+        -moz-border-radius: 3px
+        border-radius: 3px
+        &:hover
+          background: rgb(240,240,240)
+        &.inactive
+          color: rgb(222,222,222)
+
+    .calendar-mobile
+      display: block
+      overflow: hidden
+      position: relative
+      width: 100%
+      max-width: 100%
+      @include tablet
+        display: none
+      .clear
+        display: block
+        width: 100%
+        clear: both
+      .weeks
+        .week
+          .week-inner
+            position: relative
+          width: 375px
+          float: left
+          display: block
+          .week-header
+            text-align: center
+            font-weight: bold
+            font-size: 1em
+            @include tablet
+              font-size: 1.2em
+            line-height: 40px
+            height: 40px
+            border-top: 1px solid rgb(217,217,217)
+            border-bottom: 1px solid rgb(217,217,217)
+            i.switch-week
+              position: absolute
+              width: 40px
+              height: 40px
+              text-align: center
+              display: block
+              top: 0
+              line-height: 40px
+              font-size: 1.2em
+              &.switch-week-left
+                left: 5px
+              &.switch-week-right
+                right: 5px
+              &.inactive
+                color: rgb(170,170,170)
+          .week-bottom
+            .switch-week
+              background: #ECECEC
+              color: #777777
+              &:active
+                background: darken(#ECECEC, 5%)
+              +border-radius(4px)
+              padding: 2px 4px
+              margin: 10px
+              font-size: 0.8em
+              &.switch-week-left
+                float: left
+              &.switch-week-right
+                float: right
+              span
+                vertical-align: 1px
+          .week-day
+            width: 100%
+            border-bottom: 1px solid rgb(217,217,217)
+            @include box-sizing
+            .day-num
+              @include box-sizing
+              float: left
+              width: 25%
+              border-right: 1px solid rgb(217,217,217)
+              text-align: center
+              line-height: 20px
+              height: 56px
+              padding: 10px 0
+              text-transform: uppercase
+              b
+                display: block
+                font-size: 1.5em
+            .slots-info
+              @include box-sizing
+              height: 56px
+              background: rgb(247,247,247)
+              float: left
+              width: 75%
+              line-height: 18px
+              font-size: 1em
+              padding: 20px
+              .select-time
+                cursor: pointer
+                color: white
+                border-radius: 5px
+                background: rgb(111,181,86)
+                float: right
+                padding: 4px
+                margin-top: -4px
+                font-size: 0.8em
+                &:active
+                  background: darken(rgb(111,181,86), 20%)
+            &.inactive
+              .day-num
+                color: rgb(187,187,187)
+                background: rgb(247,247,247)
+
+    table.calendar
+      display: none
+      @include tablet
+        display: table
+
+      width: 100%
+      border-collapse: collapse
+      border: $cell-border
+      th
+        border: none
+        width: (100% / 7)
+        text-align: center
+      td
+        border: $cell-border
+        height: 80px
+        padding: 0
+        cursor: pointer
+        &.day:hover
+          background: $hover-bg
+        .col-inner
+          height: 100%
+          padding: 5px
+          position: relative
+          .caption
+            position: absolute
+            font-size: 0.8em
+            color: rgb(120,120,120)
+            right: 5px
+            top: 5px
+          .free-slots
+            line-height: 1em
+            word-break: normal
+            position: absolute
+            font-size: 0.7em
+            top: 35px
+            width: 80%
+            left: 10%
+            text-align: center
+            color: white
+            background: rgb(102,102,102)
+            -webkit-border-radius: 3px
+            -moz-border-radius: 3px
+            border-radius: 3px
+            padding: 4px
+            border-left: 3px solid #b8d5fd
+            &.sold
+              color: rgb(255,135,0)
+        &.inactive
+          background: $inactive-bg
+          .caption
+            color: rgb(170,170,170)
+
